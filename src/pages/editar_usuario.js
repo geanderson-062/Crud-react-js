@@ -1,7 +1,12 @@
+//libs importadas
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
+import Swal from "sweetalert2";
+
+//componentes importados
 import Navbar from "../components/navbar";
+import Footer from "../components/footer";
 
 export default function Editarusuario() {
   const navigate = useNavigate();
@@ -39,6 +44,14 @@ export default function Editarusuario() {
       .put(`http://127.0.0.1:5000/atualizarusuario/${id}`, inputs)
       .then(function (response) {
         console.log(response.data);
+        //isso aqui e um alert personalizado
+        Swal.fire({
+          text: "Usuário editado com sucesso!",
+          icon: "success",
+          confirmButtonColor: "#198754",
+        });
+
+        //navegando de volta para lista de usuarios
         navigate("/");
       })
       .catch(function (error) {
@@ -88,6 +101,10 @@ export default function Editarusuario() {
           </div>
         </div>
       </div>
+      <br />
+      <br />
+      <br />
+      <Footer />
     </>
   );
 }

@@ -1,8 +1,12 @@
+//libs importadas
 import React, { useState } from "react";
 import axios from "axios";
-
-import Navbar from "../components/navbar";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
+
+//componentes importados
+import Navbar from "../components/navbar";
+import Footer from "../components/footer";
 
 export default function Criarusario() {
   const navigate = useNavigate();
@@ -22,6 +26,15 @@ export default function Criarusario() {
       .post("http://127.0.0.1:5000/usuarioadd", inputs)
       .then(function (response) {
         console.log(response.data);
+
+        //isso aqui e um alert personalizado
+        Swal.fire({
+          text: "Usuário criado com sucesso!",
+          icon: "success",
+          confirmButtonColor: "#198754",
+        });
+
+        //navegando de volta para lista de usuarios
         navigate("/");
       });
   };
@@ -68,6 +81,10 @@ export default function Criarusario() {
           </div>
         </div>
       </div>
+      <br />
+      <br />
+      <br />
+      <Footer />
     </>
   );
 }
