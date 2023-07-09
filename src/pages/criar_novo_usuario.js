@@ -2,8 +2,11 @@ import React, { useState } from "react";
 import axios from "axios";
 
 import Navbar from "../components/navbar";
+import { useNavigate } from "react-router-dom";
 
 export default function Criarusario() {
+  const navigate = useNavigate();
+
   const [inputs, setInputs] = useState([]);
 
   const handleChange = (event) => {
@@ -19,6 +22,7 @@ export default function Criarusario() {
       .post("http://127.0.0.1:5000/usuarioadd", inputs)
       .then(function (response) {
         console.log(response.data);
+        navigate("/");
       });
   };
 
