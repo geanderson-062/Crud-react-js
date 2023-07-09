@@ -1,6 +1,9 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
+//importando bootstrap framework
+import "bootstrap/dist/css/bootstrap.min.css";
+
 /* importando as telas */
 import Listadeusuarios from "./pages/lista_de_usuarios";
 import Criarusario from "./pages/criar_novo_usuario";
