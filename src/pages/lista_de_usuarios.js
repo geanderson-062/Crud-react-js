@@ -19,6 +19,17 @@ export default function Listadeusuarios() {
       });
   }
 
+  const deleteUsuario = (id) => {
+    axios
+      .delete(`http://127.0.0.1:5000/deletarusuario/${id}`)
+
+      .then(function (response) {
+        console.log(response.data);
+        getUsuario();
+      });
+    alert("Usuário deletado com sucesso");
+  };
+
   return (
     <>
       <Navbar />
@@ -52,12 +63,18 @@ export default function Listadeusuarios() {
                       <td>{usuario.data}</td>
                       <td>
                         <Link
+                          to={`usuario/${usuario.id}/edit`}
                           className="btn btn-success"
                           style={{ marginRight: "10px" }}
                         >
                           Edit
                         </Link>
-                        <button className="btn btn-danger">Delete</button>
+                        <button
+                          onClick={() => deleteUsuario(usuario.id)}
+                          className="btn btn-danger"
+                        >
+                          Delete
+                        </button>
                       </td>
                     </tr>
                   ))}
